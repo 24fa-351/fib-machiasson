@@ -11,20 +11,20 @@ int recursiveFibonacci(int n){
 
 int main(int argc, char *argv[]) {
     char *endptr;
-    int number = strtol(argv[1], &endptr, 10), fileInt, recursiveFibNumber, a = 0, b = 1, c=0;
+    int number = strtol(argv[1], &endptr, 10), fileInt, recursiveFibNumber, firstNum = 0, secondNum = 0, finalNum = 1;
     FILE *file;
     file = fopen(argv[3], "r");
     fscanf(file, "%d", &fileInt);
     fclose(file);
-    number+=fileInt;
+    number += fileInt;
     if(argv[2][0]=='i'||argv[2][0]=='I'){
          for (int i = 3; i <= number; i++) {
-            c = a + b;
-            a = b;
-            b = c;
+            secondNum = firstNum + finalNum;
+            firstNum = finalNum;
+            finalNum = secondNum;
          }
-         printf("%d", b);
-         return b;
+         printf("%d", finalNum);
+         return finalNum;
     }
     else{
          number--;
