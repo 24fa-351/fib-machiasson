@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *endptr;
+int number = 0, fileInt, recursiveFibNumber, firstNum = 0, secondNum = 0, finalNum = 1;
+
 int recursiveFibonacci(int n){
    if (n<=1){
       return n;
@@ -9,15 +12,7 @@ int recursiveFibonacci(int n){
    }
 }
 
-int main(int argc, char *argv[]) {
-    char *endptr;
-    int number = strtol(argv[1], &endptr, 10), fileInt, recursiveFibNumber, firstNum = 0, secondNum = 0, finalNum = 1;
-    FILE *file;
-    file = fopen(argv[3], "r");
-    fscanf(file, "%d", &fileInt);
-    fclose(file);
-    number += fileInt;
-    if(argv[2][0]=='i'||argv[2][0]=='I'){
+int fib_wrapper(int n){
          for (int i = 3; i <= number; i++) {
             secondNum = firstNum + finalNum;
             firstNum = finalNum;
@@ -25,10 +20,29 @@ int main(int argc, char *argv[]) {
          }
          printf("%d", finalNum);
          return finalNum;
+}
+
+int main(int argc, char *argv[]) {
+   number=strtol(argv[1], &endptr, 10);
+    FILE *file;
+    file = fopen(argv[3], "r");
+    fscanf(file, "%d", &fileInt);
+    fclose(file);
+    number += fileInt;
+    if(number==0){
+      printf("%d", number);
+      return 0;
     }
-    else{
-         number--;
-         recursiveFibNumber=recursiveFibonacci(number);
-         printf("%d", recursiveFibNumber);
+    if(number==1){
+      printf("%d", number);
+      return 1;
+    }
+    if(argv[2][0]=='i'||argv[2][0]=='I'){
+      fib_wrapper(number);
+    }
+    else {
+      number--;
+      recursiveFibNumber=recursiveFibonacci(number);
+      printf("%d", recursiveFibNumber);
     }
 }
