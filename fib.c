@@ -13,13 +13,14 @@ int recursiveFibonacci(int n){
 }
 
 int fib_wrapper(int n){
-         for (int i = 3; i <= number; i++) {
-            secondNum = firstNum + finalNum;
-            firstNum = finalNum;
-            finalNum = secondNum;
-         }
-         printf("%d", finalNum);
-         return finalNum;
+   if(number==0){
+      printf("%d", number);
+      return 0;
+    }
+    if(number==1){
+      printf("%d", number);
+      return 1;
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -38,7 +39,13 @@ int main(int argc, char *argv[]) {
       return 1;
     }
     if(argv[2][0]=='i'||argv[2][0]=='I'){
-      fib_wrapper(number);
+      for (int i = 3; i <= number; i++) {
+            secondNum = firstNum + finalNum;
+            firstNum = finalNum;
+            finalNum = secondNum;
+         }
+         printf("%d", finalNum);
+         return finalNum;
     }
     else {
       number--;
