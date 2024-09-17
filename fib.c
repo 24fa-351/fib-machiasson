@@ -30,14 +30,7 @@ int main(int argc, char *argv[]) {
     fscanf(file, "%d", &fileInt);
     fclose(file);
     number += fileInt;
-    if(number==0){
-      printf("%d", number);
-      return 0;
-    }
-    if(number==1){
-      printf("%d", number);
-      return 1;
-    }
+    fib_wrapper(number);
     if(argv[2][0]=='i'||argv[2][0]=='I'){
       for (int i = 3; i <= number; i++) {
             secondNum = firstNum + finalNum;
