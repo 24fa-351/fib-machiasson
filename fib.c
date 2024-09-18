@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 char *endptr;
-int number = 0, fileInt, recursiveFibNumber, firstNum = 0, secondNum = 0, finalNum = 1;
+unsigned long long int number = 0, fileInt, recursiveFibNumber, firstNum = 0, secondNum = 0, finalNum = 1;
 
 int recursiveFibonacci(int n){
    if (n<=1){
@@ -14,11 +14,11 @@ int recursiveFibonacci(int n){
 
 int fib_wrapper(int n){
    if(number==0){
-      printf("%d", number);
+      printf("%lld", number);
       return 0;
     }
     if(number==1){
-      printf("%d", number);
+      printf("%lld", number);
       return 1;
     }
 }
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
    number=strtol(argv[1], &endptr, 10);
     FILE *file;
     file = fopen(argv[3], "r");
-    fscanf(file, "%d", &fileInt);
+    fscanf(file, "%lld", &fileInt);
     fclose(file);
     number += fileInt;
     fib_wrapper(number);
@@ -37,12 +37,12 @@ int main(int argc, char *argv[]) {
             firstNum = finalNum;
             finalNum = secondNum;
          }
-         printf("%d", finalNum);
+         printf("%lld", finalNum);
          return finalNum;
     }
     else {
       number--;
       recursiveFibNumber=recursiveFibonacci(number);
-      printf("%d", recursiveFibNumber);
+      printf("%lld", recursiveFibNumber);
     }
 }
